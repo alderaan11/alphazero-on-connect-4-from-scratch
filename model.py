@@ -28,6 +28,7 @@ def drop_piece(board, column, player):
     # TODO: place `player` in the lowest empty row of `column` and return the new board
     new_board = board.copy()
     lowest_spot = column_top_row(board, column)
+    if lowest_spot == -1: raise ValueError
     new_board[lowest_spot][column] = player
     return new_board
 
