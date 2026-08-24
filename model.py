@@ -64,8 +64,21 @@ def four_in_a_row_horizontal(board):
                     return player
     return 0
 
-# Step 7 - four_in_a_row_vertical (not yet solved)
-# TODO: implement
+# Step 7 - four_in_a_row_vertical
+def four_in_a_row_vertical(board):
+    for row in range(board.shape[1]):
+        player = 0
+        aligned = 0
+        for column in range(board.shape[0]):
+            current = board[column][row]
+            if current != player or current == 0:
+                player = current
+                aligned = 0
+            elif player != 0:
+                aligned += 1
+                if aligned == 3:
+                    return player
+    return 0
 
 # Step 8 - four_in_a_row_diagonal_down_right (not yet solved)
 # TODO: implement
