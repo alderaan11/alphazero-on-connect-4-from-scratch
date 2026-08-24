@@ -14,17 +14,38 @@ def make_empty_board():
     # TODO: create a 6x7 integer array of zeros and return it
     return np.zeros((6,7), dtype=np.int8)
 
-# Step 2 - column_top_row (not yet solved)
-# TODO: implement
+# Step 2 - column_top_row
+def column_top_row(board, column):
+    """Return the lowest empty row in `column`, or -1 if the column is full."""
+    # TODO: scan the column from the bottom up and return the first empty row index
+    for i in  reversed(range(board.shape[0])):
+        if board[i][column] == 0:
+            return i
+    return -1
 
-# Step 3 - drop_piece (not yet solved)
-# TODO: implement
+# Step 3 - drop_piece
+def drop_piece(board, column, player):
+    # TODO: place `player` in the lowest empty row of `column` and return the new board
+    new_board = board.copy()
+    lowest_spot = column_top_row(board, column)
+    new_board[lowest_spot][column] = player
+    return new_board
 
-# Step 4 - column_full (not yet solved)
-# TODO: implement
+# Step 4 - column_full
+import numpy as np
 
-# Step 5 - valid_moves (not yet solved)
-# TODO: implement
+def column_full(board, column):
+    """Return True if `column` has no empty rows left."""
+    return all(board[i][column] != 0 for i in range(board.shape[0]))
+
+# Step 5 - valid_moves
+def valid_moves(board):
+    # TODO: return a list of column indices that still have at least one empty row
+    valid_indexes = []
+    for i in range(board.shape[1]):
+        if not column_full(board, i):
+            valid_indexes.append(i)
+    return valid_indexes
 
 # Step 6 - four_in_a_row_horizontal (not yet solved)
 # TODO: implement

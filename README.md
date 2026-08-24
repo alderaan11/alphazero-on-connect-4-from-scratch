@@ -11,10 +11,10 @@ python scaffold.py
 ## Steps
 
 - [x] **1.** make_empty_board
-- [ ] **2.** column_top_row
-- [ ] **3.** drop_piece
-- [ ] **4.** column_full
-- [ ] **5.** valid_moves
+- [x] **2.** column_top_row
+- [x] **3.** drop_piece
+- [x] **4.** column_full
+- [x] **5.** valid_moves
 - [ ] **6.** four_in_a_row_horizontal
 - [ ] **7.** four_in_a_row_vertical
 - [ ] **8.** four_in_a_row_diagonal_down_right
