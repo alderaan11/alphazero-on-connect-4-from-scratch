@@ -48,8 +48,21 @@ def valid_moves(board):
             valid_indexes.append(i)
     return valid_indexes
 
-# Step 6 - four_in_a_row_horizontal (not yet solved)
-# TODO: implement
+# Step 6 - four_in_a_row_horizontal
+def four_in_a_row_horizontal(board):
+    for row in range(board.shape[0]):
+        player = 0
+        aligned = 0
+        for column in range(board.shape[1]):
+            current = board[row][column]
+            if current != player or current == 0:
+                player = current
+                aligned = 0
+            elif player != 0:
+                aligned += 1
+                if aligned == 3:
+                    return player
+    return 0
 
 # Step 7 - four_in_a_row_vertical (not yet solved)
 # TODO: implement
