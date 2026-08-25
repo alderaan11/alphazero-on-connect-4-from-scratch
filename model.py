@@ -80,8 +80,23 @@ def four_in_a_row_vertical(board):
                     return player
     return 0
 
-# Step 8 - four_in_a_row_diagonal_down_right (not yet solved)
-# TODO: implement
+# Step 8 - four_in_a_row_diagonal_down_right
+def verify_diagonal(board,row, column, player):
+    diagonal = 0
+    for i in range(4):
+        if board[row+i][column+i] == player:
+            diagonal += 1
+            if diagonal == 4: return True
+    else: return False
+
+def four_in_a_row_diagonal_down_right(board):
+    for row in reversed(range(board.shape[0] - 3)):
+        for column in range(board.shape[1] - 3):
+            if board[row][column] != 0:
+                if verify_diagonal(board, row, column, board[row][column]):
+                    return board[row][column]
+
+    return 0
 
 # Step 9 - four_in_a_row_diagonal_up_right (not yet solved)
 # TODO: implement
