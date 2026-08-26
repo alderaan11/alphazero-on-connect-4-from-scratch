@@ -168,8 +168,11 @@ def encode_board(board, current_player):
     opponent_plane = (board == opponent)
     return np.stack([player_plane, opponent_plane], dtype=np.float32)
 
-# Step 16 - board_to_torch_tensor (not yet solved)
-# TODO: implement
+# Step 16 - board_to_torch_tensor
+def board_to_torch_tensor(board, current_player):
+    # TODO: encode the board and return it as a float32 torch tensor of shape (1, 2, 6, 7).
+    stacked_board = encode_board(board, current_player)
+    return torch.from_numpy(stacked_board).unsqueeze(0) #rajouter une dimension au début
 
 # Step 17 - init_conv_backbone (not yet solved)
 # TODO: implement
