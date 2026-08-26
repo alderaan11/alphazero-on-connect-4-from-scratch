@@ -90,7 +90,7 @@ def verify_diagonal(board,row, column, player):
     else: return False
 
 def four_in_a_row_diagonal_down_right(board):
-    for row in reversed(range(board.shape[0] - 3)):
+    for row in range(board.shape[0] - 3):
         for column in range(board.shape[1] - 3):
             if board[row][column] != 0:
                 if verify_diagonal(board, row, column, board[row][column]):
@@ -116,8 +116,23 @@ def four_in_a_row_diagonal_up_right(board):
 
     return 0
 
-# Step 10 - check_winner (not yet solved)
-# TODO: implement
+# Step 10 - check_winner
+import numpy as np
+
+def check_winner(board):
+    """Return 1 or 2 if that player has four in a row, else 0."""
+    # TODO: combine the four direction scans and return the first non-zero result
+    checks = (
+        four_in_a_row_diagonal_down_right,
+        four_in_a_row_diagonal_up_right,
+        four_in_a_row_horizontal,
+        four_in_a_row_vertical,
+    )
+    for check in checks:
+        result = check(board)
+        if result != 0:
+            return result
+    return 0
 
 # Step 11 - board_is_full (not yet solved)
 # TODO: implement
