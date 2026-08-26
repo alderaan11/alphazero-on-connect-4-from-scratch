@@ -198,8 +198,21 @@ def init_policy_head(hidden_channels=16, num_columns=7):
         nn.Linear(policy_channels * 6 * 7, num_columns)
     )
 
-# Step 19 - init_value_head (not yet solved)
-# TODO: implement
+# Step 19 - init_value_head
+import torch
+import torch.nn as nn
+
+def init_value_head(hidden_channels=16):
+    """Return an nn.Module mapping (B, hidden_channels, 6, 7) -> (B, 1) in (-1, 1)."""
+    value_channel = 1
+    return nn.Sequential(
+        nn.Conv2d(in_channels=hidden_channels,
+        out_channels=value_channel,
+        kernel_size=1),
+        nn.Flatten(),
+        nn.Linear(value_channel * 6 * 7, value_channel),
+        nn.Tanh()
+    )
 
 # Step 20 - build_policy_value_net (not yet solved)
 # TODO: implement
