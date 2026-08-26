@@ -37,7 +37,7 @@ import numpy as np
 
 def column_full(board, column):
     """Return True if `column` has no empty rows left."""
-    return all(board[i][column] != 0 for i in range(board.shape[0]))
+    return bool(board[0][column] != 0)
 
 # Step 5 - valid_moves
 def valid_moves(board):
@@ -133,7 +133,7 @@ def check_winner(board):
 # Step 11 - board_is_full
 def board_is_full(board):
     # TODO: return True when no column has an empty slot left
-    return valid_moves(board) == 0
+    return len(valid_moves(board)) == 0
 
 # Step 12 - is_terminal (not yet solved)
 # TODO: implement
